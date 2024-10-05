@@ -1,0 +1,26 @@
+project: app-ui
+argoCDNamespace: argo-cd
+destination:
+  server: https://kubernetes.default.svc
+  namespace: app
+source:
+  repoURL: git@github.com:bpn2k4/argocd-config.git
+  targetRevision: main
+  helm:
+    valueFiles:
+      - values.yaml
+syncPolicy:
+  automated:
+    prune: true
+    selfHeal: true
+  syncOptions:
+    - ApplyOutOfSyncOnly=true
+    - PruneLast=true
+    - CreateNamespace=true
+    - Validate=false
+  retry:
+    limit: 3
+    backoff:
+      duration: 10s
+      factor: 2
+      maxDuration: 3m
