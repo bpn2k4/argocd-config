@@ -12,5 +12,5 @@ spec:
     path: charts/youtube-ui
     repoURL: {{ .Values.source.repoURL }}
     targetRevision: {{ .Values.source.targetRevision }}
-    helm: {{ .Values.source.helm }}
-  syncPolicy: {{ .Values.syncPolicy }}
+    helm: {{- toYaml .Values.source.helm | nindent 6 }}
+  syncPolicy: {{- toYaml .Values.syncPolicy | nindent 4 }}
