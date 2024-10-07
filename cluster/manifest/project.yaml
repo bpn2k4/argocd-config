@@ -3,6 +3,7 @@ kind: AppProject
 metadata:
   name: app-ui
   namespace: argo-cd # !importance, if not argo cd namespace, it will error not found application
+  finalizers: []
   # finalizers:
   #   - resources-finalizer.argocd.argoproj.io
   # Uncomment it if want to wait until all resource reference to this project be deleted
